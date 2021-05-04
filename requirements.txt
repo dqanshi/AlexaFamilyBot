@@ -30,7 +30,7 @@ PyYAML
 requests
 spamwatch
 spongemock
-sqlalchemy
+sqlalchemy==1.3.20
 tldextract
 wikipedia
 zalgo-text
