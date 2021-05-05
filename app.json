@@ -8,7 +8,7 @@
     "manager",
     "3"
   ],
-  "repository": "https://github.com/technicalhackerz/Haruka-Aya-Clone",
+  "repository": "https://github.com/dqanshi/Haruka-Aya-Clone",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable env variables",
