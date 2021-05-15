@@ -93,6 +93,8 @@ if ENV:
     IBM_WATSON_CRED_URL = os.environ.get('IBM_WATSON_CRED_URL', None)
     IBM_WATSON_CRED_PASSWORD = os.environ.get('IBM_WATSON_CRED_PASSWORD', None)
     SUPPORT_USERS = list(SUPPORT_USERS)
+    INTRO_IMG = os.environ.get('INTRO_IMG' ,'None'),
+    INTRO_TXT = os.environ.get('INTRO_TXT', 'None')
     WALL_API = os.environ.get('WALL_API', None)
     CHROME_DRIVER = os.environ.get("CHROME_DRIVER", None)
     GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", None)
@@ -105,7 +107,9 @@ if ENV:
     if ALLOW_EXCL:
        tg.CommandHandler = CustomCommandHandler
     tg.CommandHandler = GbanLockHandler
-    MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)   
+    MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)  
+    INTRO_IMG = Config.INTRO_IMG
+    INTRO_TXT = Config.INTRO_TXT
 
     REDIS = StrictRedis(host='localhost', port=6379, db=0)
 
