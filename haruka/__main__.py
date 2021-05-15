@@ -2,7 +2,6 @@ import importlib
 import os
 import re
 import datetime
-from typing import Optional, List
 import resource
 import platform
 import sys
