@@ -143,8 +143,7 @@ def send_start(bot, update):
     first_name = update.effective_user.first_name
     text = "𝐇𝐞𝐲 *{}* 𝒂𝒅𝒅 𝒎𝒆 𝒕𝒐 𝒚𝒐𝒖𝒓 𝒈𝒓𝒐𝒖𝒑"
     text += "\n𝙸𝚊𝚖 {} 𝚊𝚗 𝚙𝚛𝚘𝚏𝚏𝚎𝚜𝚜𝚒𝚘𝚗𝚊𝚕 𝚋𝚘𝚝"
-    text += "\n𝗝𝗼𝗶𝗻 [𝗡𝗲𝘄𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝗙𝗼𝗿 𝘂𝗽𝗱𝗮𝘁𝗲𝘀 𝗮𝗯𝗼𝘂𝘁 𝗺𝗲](https://t.me/)" 
-    text += "_Maintained by_ [{}](tg://user?id={})"  
+    text += "\n𝗝𝗼𝗶𝗻 [𝗡𝗲𝘄𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝗙𝗼𝗿 𝘂𝗽𝗱𝗮𝘁𝗲𝘀 𝗮𝗯𝗼𝘂𝘁 𝗺𝗲](https://t.me/)"  
 
     keyboard = [[InlineKeyboardButton(text="✨Help", callback_data="help_back"),InlineKeyboardButton(text="✨Support✨",url="https://t.me/")]]
     keyboard += [[InlineKeyboardButton(text="⚡Add Me",url="t.me/{}?startgroup=true".format(bot.username)),InlineKeyboardButton(text="♻️Owner",url="https://t.me/am_dq_fan")]]
