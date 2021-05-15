@@ -31,10 +31,6 @@ def vercheck() -> str:
 
 HELP_STRINGS = HELP_PANEL_STRING.HELP.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 INTRO_TXT = os.environ.get('INTRO_TXT', None)
-INTRO_TXT = """
-_Maintained by_ [{}](tg://user?id={})
-
-"""
 
 IMPORTED = {}
 MIGRATEABLE = []
