@@ -12,7 +12,7 @@ from telegram.ext import MessageHandler, Filters, CommandHandler, run_async, Cal
 from telegram.utils.helpers import mention_markdown, mention_html, escape_markdown
 
 import haruka.modules.sql.welcome_sql as sql
-from haruka import dispatcher, OWNER_ID, DEV_USERS, SUDO_USERS, SUPPORT_USERS, TIGER_USERS, WHITELIST_USERS, LOGGER
+from haruka import dispatcher, OWNER_ID, DEV_USERS, SUDO_USERS, SUPPORT_USERS, WHITELIST_USERS, LOGGER
 from haruka.modules.helper_funcs.chat_status import user_admin, is_user_ban_protected
 from haruka.modules.helper_funcs.misc import build_keyboard, revert_buttons
 from haruka.modules.helper_funcs.msg_types import get_welcome_type
