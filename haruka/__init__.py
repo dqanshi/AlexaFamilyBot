@@ -5,7 +5,7 @@ from pymongo import MongoClient
 from redis import StrictRedis
 from telethon import TelegramClient
 import telegram.ext as tg
-from haruka import sample_config as  config
+from haruka import sample_config as config
 
 print("haruka")
 print("Starting...")
