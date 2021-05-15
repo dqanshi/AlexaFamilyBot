@@ -52,6 +52,11 @@ if ENV:
         DEV_USERS = set(int(x) for x in os.environ.get("DEV_USERS", "").split())
     except ValueError:
         raise Exception("Your developer users list does not contain valid integers.")
+    try:
+        TIGER_USERS = set(int(x) for x in os.environ.get("TIGER_USERS", "").split())
+    except ValueError:
+        raise Exception("Your TIGER users list does not contain valid integers.")
+
 
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
     URL = os.environ.get('URL', "")  # Does not contain token
@@ -82,6 +87,7 @@ if ENV:
     dispatcher = updater.dispatcher
     SUDO_USERS = list(SUDO_USERS)
     DEV_USERS =  list(DEV_USERS)
+    TIGER_USERS = list(TIGER_USERS)
     REM_BG_API_KEY = os.environ.get('REM_BG_API_KEY', None)
     WHITELIST_USERS = list(WHITELIST_USERS)
     IBM_WATSON_CRED_URL = os.environ.get('IBM_WATSON_CRED_URL', None)
