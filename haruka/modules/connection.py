@@ -15,7 +15,7 @@ from haruka.modules.helper_funcs.string_handling import extract_time
 
 from haruka.modules.translations.strings import tld
 
-from haruka.modules.keyboard import keyboard
+
 
 
 @user_admin
