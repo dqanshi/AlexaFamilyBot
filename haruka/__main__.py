@@ -29,7 +29,7 @@ from haruka.modules.connection import connect_button
 
 
 HELP_STRINGS = HELP_PANEL_STRING.HELP.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
-
+INTRO_TXT = os.environ.get('INTRO_TXT', None)
 
 PM_START_TEXT = """
 𝐇𝐞𝐲 *{}* 𝒂𝒅𝒅 𝒎𝒆 𝒕𝒐 𝒚𝒐𝒖𝒓 𝒈𝒓𝒐𝒖𝒑
