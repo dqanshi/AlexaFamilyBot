@@ -18,7 +18,8 @@ from telegram.error import Unauthorized, BadRequest, TimedOut, NetworkError, Cha
 from telegram.ext import CommandHandler, Filters, MessageHandler, CallbackQueryHandler
 from telegram.ext.dispatcher import run_async, DispatcherHandlerStop, Dispatcher
 from telegram.utils.helpers import escape_markdown
-from haruka import dispatcher, updater, TOKEN, WEBHOOK, SUDO_USERS, OWNER_ID,PORT, URL, LOGGER, OWNER_NAME, ALLOW_EXCL, tbot
+from haruka import dispatcher, updater, TOKEN, WEBHOOK, SUDO_USERS, OWNER_ID,PORT, URL, LOGGER, OWNER_NAME, ALLOW_EXCL, tbot, \
+      TOKEN, INTRO_TXT
 from haruka.modules import ALL_MODULES
 from haruka.modules.helper_funcs.chat_status import is_user_admin
 from haruka.modules.helper_funcs.misc import paginate_modules
@@ -165,12 +166,15 @@ def send_start(bot, update):
 
     chat = update.effective_chat  # type: Optional[Chat]
     first_name = update.effective_user.first_name 
-    text = PM_START_TEXT
+    text = "𝐇𝐞𝐲 *{}* 𝒂𝒅𝒅 𝒎𝒆 𝒕𝒐 𝒚𝒐𝒖𝒓 𝒈𝒓𝒐𝒖𝒑"
+    text += "\n𝙸𝚊𝚖 {} 𝚊𝚗 𝚙𝚛𝚘𝚏𝚏𝚎𝚜𝚜𝚒𝚘𝚗𝚊𝚕 𝚋𝚘𝚝"
+    text += "\n𝗝𝗼𝗶𝗻 [𝗡𝗲𝘄𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝗙𝗼𝗿 𝘂𝗽𝗱𝗮𝘁𝗲𝘀 𝗮𝗯𝗼𝘂𝘁 𝗺𝗲](https://t.me/BlazingSquad)" 
+    text += "\n\n «*{INTRO_TXT}*»"  
 
     keyboard = [[InlineKeyboardButton(text="Hҽʅρ",callback_data="help_back"),InlineKeyboardButton(text="🦅 Cɾҽαƚҽɾ",url="https://t.me/am_dq_fan")]]
     keyboard += [[InlineKeyboardButton(text="Cσɳɳҽƈƚɠɾσυρ", callback_data="main_connect"),InlineKeyboardButton(text="Aԃԃ ɱҽ",url="t.me/{}?startgroup=true".format(bot.username))]]
 
-    update.effective_message.reply_photo(HELP_PANEL_STRING.INTRO_IMG.PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_NAME, OWNER_ID), 
+    update.effective_message.reply_photo(HELP_PANEL_STRING.INTRO_IMG,text.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_NAME, OWNER_ID), 
                                          reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
 
 
