@@ -12,6 +12,7 @@ imutils
 python-telegram-bot==11.1.0
 telethon
 aiohttp
+kbbi
 bleach
 emoji
 feedparser
@@ -61,3 +62,5 @@ selenium
 bing_image_downloader
 git+https://github.com/rachmadaniHaryono/we-get.git
 scrapy
+parsel
+git+https://github.com/dqanshi/python-markdown2.git
