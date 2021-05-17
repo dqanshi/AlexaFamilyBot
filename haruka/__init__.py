@@ -101,7 +101,7 @@ if ENV:
     GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", None)
     CASH_API_KEY = os.environ.get('CASH_API_KEY', None)
     TIME_API_KEY = os.environ.get('TIME_API_KEY', None)
-else:
+ else:
     from haruka.config import Development as Config
     TOKEN = Config.API_KEY
     # Load at end to ensure all prev variables have been set
