@@ -19,7 +19,7 @@ from telegram.ext import CommandHandler, Filters, MessageHandler, CallbackQueryH
 from telegram.ext.dispatcher import run_async, DispatcherHandlerStop, Dispatcher
 from telegram.utils.helpers import escape_markdown
 from haruka import dispatcher, updater, TOKEN, WEBHOOK, SUDO_USERS, OWNER_ID,PORT, URL, LOGGER, OWNER_NAME, ALLOW_EXCL, tbot, \
-      TOKEN
+      TOKEN, 
 from haruka.modules import ALL_MODULES
 from haruka.modules.helper_funcs.chat_status import is_user_admin
 from haruka.modules.helper_funcs.misc import paginate_modules
@@ -246,7 +246,7 @@ def help_button(bot: Bot, update: Update):
         elif back_match:
             query.message.reply_text(text=HELP_STRINGS,
                                      parse_mode=ParseMode.MARKDOWN,
-                                     reply_markup=InlineKeyboardMarkup(paginate_modules(chat_id,0, HELPABLE, "help")))
+                                     reply_markup=InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help")))
 
         # ensure no spinny white circle
         bot.answer_callback_query(query.id)
