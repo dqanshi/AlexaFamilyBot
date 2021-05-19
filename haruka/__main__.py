@@ -169,7 +169,7 @@ def send_start(bot, update):
     text = "𝐇𝐞𝐲 *{}* 𝒂𝒅𝒅 𝒎𝒆 𝒕𝒐 𝒚𝒐𝒖𝒓 𝒈𝒓𝒐𝒖𝒑"
     text += "\n𝙸𝚊𝚖 {} 𝚊𝚗 𝚙𝚛𝚘𝚏𝚏𝚎𝚜𝚜𝚒𝚘𝚗𝚊𝚕 𝚋𝚘𝚝"
     text += "\n𝗝𝗼𝗶𝗻 [𝗡𝗲𝘄𝘀 𝗖𝗵𝗮𝗻𝗻𝗲𝗹 𝗙𝗼𝗿 𝘂𝗽𝗱𝗮𝘁𝗲𝘀 𝗮𝗯𝗼𝘂𝘁 𝗺𝗲](https://t.me/BlazingSquad)" 
-    text += "\n\n «*{INTRO_TXT}*»"  
+    text += "\n contact me on @am_dq_fan"  
 
     keyboard = [[InlineKeyboardButton(text="Hҽʅρ",callback_data="help_back"),InlineKeyboardButton(text="🦅 Cɾҽαƚҽɾ",url="https://t.me/am_dq_fan")]]
     keyboard += [[InlineKeyboardButton(text="Cσɳɳҽƈƚɠɾσυρ", callback_data="main_connect"),InlineKeyboardButton(text="Aԃԃ ɱҽ",url="t.me/{}?startgroup=true".format(bot.username))]]
