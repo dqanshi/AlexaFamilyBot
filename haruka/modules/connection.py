@@ -4,7 +4,7 @@ from telegram import ParseMode
 from telegram import Message, Chat, Update, Bot, User
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters
-from telegram.ext.dispatcher import run_async
+from telegram.ext import CommandHandler, CallbackQueryHandler, run_async
 from telegram.utils.helpers import mention_html
 
 import haruka.modules.sql.connection_sql as sql
@@ -166,6 +166,51 @@ def connected(bot, update, chat, user_id, need_admin=True):
     else:
         return False
 
+@run_async
+def connect_button(bot: Bot, update: Update):
+    query = update.callback_query
+    chat = update.effective_chat
+    user = update.effective_user
+
+    connect_match = re.match(r"connect\((.+?)\)", query.data)
+    disconnect_match = query.data == "connect_disconnect"
+    clear_match = query.data == "connect_clear"
+    connect_close = query.data == "connect_close"
+
+    if connect_match:
+        target_chat = connect_match.group(1)
+        getstatusadmin = bot.get_chat_member(target_chat, query.from_user.id)
+        isadmin = getstatusadmin.status in ADMIN_STATUS
+        ismember = getstatusadmin.status in MEMBER_STAUS
+        isallow = sql.allow_connect_to_chat(target_chat)
+
+        if isadmin or (isallow and ismember) or (user.id in SUDO_USERS) or (user.id in DEV_USERS):
+            connection_status = sql.connect(query.from_user.id, target_chat)
+
+            if connection_status:
+                conn_chat = dispatcher.bot.getChat(connected(bot, update, chat, user.id, need_admin=False))
+                chat_name = conn_chat.title
+                query.message.edit_text(f"Successfully connected to *{chat_name}*."
+                                        f" Use /connection for see current available commands.",
+                                        parse_mode=ParseMode.MARKDOWN)
+                sql.add_history_conn(user.id, str(conn_chat.id), chat_name)
+            else:
+                query.message.edit_text("Connection failed!")
+        else:
+            bot.answer_callback_query(query.id, "Connection to this chat is not allowed!", show_alert=True)
+    elif disconnect_match:
+        disconnection_status = sql.disconnect(query.from_user.id)
+        if disconnection_status:
+            sql.disconnected_chat = query.message.edit_text("Disconnected from chat!")
+        else:
+            bot.answer_callback_query(query.id, "You're not connected!", show_alert=True)
+    elif clear_match:
+        sql.clear_history_conn(query.from_user.id)
+        query.message.edit_text("History connected has been cleared!")
+    elif connect_close:
+        query.message.edit_text("Closed.\nTo open again, type /connect")
+    else:
+        connect_chat(bot, update, [])
 
 __help__ = """
 Sometimes, you just want to add some notes and filters to a group chat, but you don't want everyone to see; This is where connections come in...
@@ -195,7 +240,9 @@ __mod_name__ = "Connections"
 CONNECT_CHAT_HANDLER = CommandHandler("connect", connect_chat, allow_edited=True, pass_args=True)
 DISCONNECT_CHAT_HANDLER = CommandHandler("disconnect", disconnect_chat, allow_edited=True)
 ALLOW_CONNECTIONS_HANDLER = CommandHandler("allowconnect", allow_connections, allow_edited=True, pass_args=True)
+CONNECT_BTN_HANDLER = CallbackQueryHandler(connect_button, pattern=r"connect")
 
 dispatcher.add_handler(CONNECT_CHAT_HANDLER)
 dispatcher.add_handler(DISCONNECT_CHAT_HANDLER)
 dispatcher.add_handler(ALLOW_CONNECTIONS_HANDLER)
+dispatcher.add_handler(CONNECT_BTN_HANDLER)
