@@ -12,6 +12,7 @@ imutils
 python-telegram-bot==11.1.0
 telethon
 aiohttp
+kbbi
 bleach
 emoji
 feedparser
@@ -44,7 +45,7 @@ youtube.dl
 google-api-python-client
 pyDownload
 telegraph
-aria2p
+configparser
 cowpy
 psutil 
 hachoir
@@ -60,3 +61,6 @@ chatterbot==1.0.4
 selenium
 bing_image_downloader
 git+https://github.com/rachmadaniHaryono/we-get.git
+scrapy
+parsel
+git+https://github.com/dqanshi/python-markdown2.git
